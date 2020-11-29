@@ -56,7 +56,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker-images
-          file: ${{ matrix.image.dockerfile }}
+          file: ./docker-images/${{ matrix.image.name }}.dockerfile
           platforms: linux/amd64,linux/arm/v7
           pull: true
           push: true
