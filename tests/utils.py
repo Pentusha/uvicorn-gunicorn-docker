@@ -55,7 +55,7 @@ def get_response_text2() -> str:
     return f"Test app. From Uvicorn with Gunicorn. Using Python {python_version}"
 
 
-def generate_dockerfile_content(name: str) -> str:
-    content = f"FROM tiangolo/uvicorn-gunicorn:{name}\n"
+def generate_dockerfile_content(image_name: str) -> str:
+    content = f"FROM {image_name}\n"
     content += "COPY ./app /app"
     return content

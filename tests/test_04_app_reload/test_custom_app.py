@@ -40,8 +40,8 @@ def verify_container(container: Container, response_text: str) -> None:
     ],
 )
 def test_custom_app(environment: Dict[str, str]) -> None:
-    name = os.getenv("NAME", "")
-    dockerfile_content = generate_dockerfile_content(name)
+    image_name = os.getenv("DOCKER_IMAGE", "")
+    dockerfile_content = generate_dockerfile_content(image_name)
     dockerfile = "Dockerfile"
     response_text = get_response_text2()
     sleep_time = int(os.getenv("SLEEP_TIME", 1))

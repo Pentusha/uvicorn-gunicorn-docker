@@ -71,3 +71,4 @@ jobs:
         run: pytest tests
         env:
           PYTHON_VERSION: ${{ matrix.image.python_version }}
+          DOCKER_IMAGE: ${{ env.IMAGE_REPOSITORY }}:${{ matrix.image.name }}
