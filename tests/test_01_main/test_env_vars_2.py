@@ -40,12 +40,11 @@ def verify_container(container: Container) -> None:
 
 
 def test_env_vars_2() -> None:
-    name = os.getenv("NAME")
-    image = f"tiangolo/uvicorn-gunicorn:{name}"
+    image_name = os.getenv("DOCKER_IMAGE")
     sleep_time = int(os.getenv("SLEEP_TIME", 1))
     remove_previous_container(client)
     container = client.containers.run(
-        image,
+        image_name,
         name=CONTAINER_NAME,
         environment={
             "WEB_CONCURRENCY": 1,

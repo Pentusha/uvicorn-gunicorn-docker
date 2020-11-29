@@ -20,13 +20,12 @@ def verify_container(container: Container) -> None:
 
 
 def test_env_vars_2() -> None:
-    name = os.getenv("NAME")
-    image = f"tiangolo/uvicorn-gunicorn:{name}"
+    image_name = os.getenv("DOCKER_IMAGE")
     sleep_time = int(os.getenv("SLEEP_TIME", 1))
     time.sleep(sleep_time)
     remove_previous_container(client)
     container = client.containers.run(
-        image,
+        image_name,
         name=CONTAINER_NAME,
         environment={"HOST": "127.0.0.1"},
         ports={"80": "8000"},
