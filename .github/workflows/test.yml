@@ -36,9 +36,16 @@ jobs:
           python-version: "3.7"
       - name: Install Dependencies
         run: python3.7 -m pip install docker pytest
+      - name: Build docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ${{ matrix.image.dockerfile }}
+          platforms: linux/amd64,linux/arm/v7
+          pull: true
+          push: false
+          tags: |
+            ${{ github.repository }}:${{ matrix.image.name }}
+            ${{ github.repository }}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}
       - name: Test Image
-        run: bash scripts/test.sh
-        env:
-          NAME: ${{ matrix.image.name }}
-          DOCKERFILE: ${{ matrix.image.dockerfile }}
-          PYTHON_VERSION: ${{ matrix.image.python_version }}
+        run: pytest tests

@@ -56,16 +56,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./docker-images
           file: ${{ matrix.image.dockerfile }}
           platforms: linux/amd64,linux/arm/v7
           pull: true
           push: true
-          target: api
           tags: |
             ${{ github.repository }}:${{ matrix.image.name }}
             ${{ github.repository }}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}
-      - name: Latest docker image
-        run: |
-          docker tag ${{ github.repository }}:python3.8 ${{ github.repository }}:latest
-          docker push ${{ github.repository }}:latest
