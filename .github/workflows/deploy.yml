@@ -65,3 +65,7 @@ jobs:
           tags: |
             ${{ github.repository }}:${{ matrix.image.name }}
             ${{ github.repository }}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}
+      - name: Latest docker image
+        run: |
+          docker tag ${{ github.repository }}:python3.8 ${{ github.repository }}:latest
+          docker push ${{ github.repository }}:latest
