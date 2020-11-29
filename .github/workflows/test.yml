@@ -49,3 +49,5 @@ jobs:
             ${{ github.repository }}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}
       - name: Test Image
         run: pytest tests
+        env:
+          PYTHON_VERSION: ${{ matrix.image.python_version }}
