@@ -70,5 +70,5 @@ jobs:
           pull: true
           push: true
           tags: |
-            ${IMAGE_REPOSITORY}:${{ matrix.image.name }}
-            ${IMAGE_REPOSITORY}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}
+            ${{ env.IMAGE_REPOSITORY }}:${{ matrix.image.name }}
+            ${{ env.IMAGE_REPOSITORY }}:${{ matrix.image.name }}-${{ steps.date.outputs.iso8601 }}

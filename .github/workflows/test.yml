@@ -55,7 +55,7 @@ jobs:
           pull: true
           push: false
           tags: |
-            ${IMAGE_REPOSITORY}:${{ matrix.image.name }}
+            ${{ env.IMAGE_REPOSITORY }}:${{ matrix.image.name }}
       - name: Test Image
         run: pytest tests
         env:
