@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Get image repository
-          run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+        run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v1
