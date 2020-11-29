@@ -63,7 +63,7 @@ jobs:
           context: ./docker-images
           file: ${{ matrix.image.dockerfile }}
           platforms: linux/amd64,linux/arm/v7
-          pull: true
+          pull: false
           push: false
           tags: |
             ${{ env.IMAGE_REPOSITORY }}:${{ matrix.image.name }}
